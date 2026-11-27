@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#542747">
+  <title>AfkiVerse &amp; Planet Bari — Small joys. Gentle discoveries.</title>
+  <meta name="description" content="Explore beauty and self-care essentials, jewellery, bridal trousseau packing, and personalized gift hampers with Afki and Bari.">
+  <style>
+    :root {
+      --plum: #542747;
+      --gold: #e8c778;
+      --cream: #fffaf1;
+      --ink: #392d3a;
+      --muted: #817584;
+      --line: #eadfe8;
+      --lilac: #e8def1;
+      --blush: #f7e6ef;
+      --pistachio: #e4efd9;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #fffaf1f2;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      text-decoration: none;
+      color: var(--plum);
+      font-weight: 850;
+    }
+    .brand img { width: 32px; height: 32px; object-fit: contain; }
+    .links {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex: 1;
+    }
+    .links::-webkit-scrollbar { display: none; }
+    .links a {
+      white-space: nowrap;
+      color: var(--plum);
+      font-size: .84rem;
+      font-weight: 750;
+      text-decoration: none;
+    }
+    .links a:hover { color: #956b8d; }
+    .hero-wrap { max-width: 1200px; padding: 0 15px; margin: 15px auto; }
+    .hero {
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(125deg, var(--lilac), var(--blush) 65%, #f8eddb);
+      box-shadow: 0 10px 28px #54274718;
+    }
+    .hero-banner {
+      display: block;
+      width: 100%;
+      height: clamp(230px, 40vw, 460px);
+      object-fit: cover;
+      object-position: center 48%;
+      background: linear-gradient(120deg, #4b2145, #886181);
+    }
+    .hero-content {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 20px;
+      align-items: center;
+    }
+    .eyebrow {
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      color: #70415f;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.02;
+      letter-spacing: -.045em;
+      color: var(--plum);
+      margin: 9px 0 14px;
+    }
+    .hero p { color: #66596a; max-width: 650px; }
+    .actions { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 18px; }
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 15px;
+      font: inherit;
+      font-weight: 750;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .primary { background: var(--plum); color: white; }
+    .secondary { background: white; color: var(--plum); border: 1px solid #ddcedd; }
+    .mascots { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .mascot {
+      background: #ffffffc4;
+      border: 1px solid white;
+      border-radius: 17px;
+      padding: 9px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .mascot img { width: 100%; height: 110px; object-fit: contain; }
+    .mascot strong { display: block; color: var(--plum); }
+    .mascot small { color: var(--muted); }
+    main { max-width: 1200px; margin: auto; padding: 20px 15px 40px; }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+    .section-head h2 { margin: 0; color: var(--plum); font-size: 1.5rem; }
+    .section-head p { margin: 3px 0 0; color: var(--muted); font-size: .92rem; }
+    .pill {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 10px;
+      color: var(--muted);
+      font-size: .76rem;
+      white-space: nowrap;
+    }
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .collection-card {
+      position: relative;
+      min-height: 225px;
+      overflow: hidden;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #fffdf8;
+      box-shadow: 0 7px 20px #5427470d;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .collection-card::after {
+      content: "";
+      position: absolute;
+      width: 145px;
+      height: 145px;
+      right: -45px;
+      bottom: -60px;
+      border-radius: 50%;
+      background: var(--card-tint, #f1e5f0);
+      opacity: .75;
+      pointer-events: none;
+    }
+    .collection-card.sparkle { --card-tint: #f6e5ef; }
+    .collection-card.pearls { --card-tint: #e7e0f1; }
+    .collection-card.trousseau { --card-tint: #f4e7d5; }
+    .collection-card.hampers { --card-tint: #e5eddc; }
+    .collection-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--card-tint, #f1e5f0);
+      font-size: 1.65rem;
+      margin-bottom: 12px;
+    }
+    .collection-card h3 {
+      margin: 0 0 7px;
+      color: var(--plum);
+      font-family: Georgia, serif;
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+    }
+    .collection-card p { margin: 0 0 16px; color: var(--muted); max-width: 480px; }
+    .collection-status {
+      margin-top: auto;
+      display: inline-block;
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: #f1e5f0;
+      color: var(--plum);
+      font-size: .75rem;
+      font-weight: 750;
+    }
+    .story-section { margin-top: 32px; }
+    .story-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .story {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      padding: 17px;
+    }
+    .story h3 { color: var(--plum); margin: 0 0 5px; }
+    .story p { color: var(--muted); margin: 0; font-size: .92rem; }
+    footer {
+      text-align: center;
+      padding: 22px;
+      border-top: 1px solid var(--line);
+      font-size: .82rem;
+      color: var(--muted);
+    }
+    footer strong { color: var(--plum); }
+    @media (max-width: 800px) {
+      .hero-content { grid-template-columns: 1fr; }
+      .mascots { max-width: 430px; }
+    }
+    @media (max-width: 560px) {
+      nav { padding: 8px 10px; gap: 10px; }
+      .brand { font-size: .8rem; }
+      .brand img { width: 28px; height: 28px; }
+      .links { gap: 12px; }
+      .links a { font-size: .74rem; }
+      .hero-wrap { padding: 0 10px; margin-top: 10px; }
+      .hero-banner { height: 240px; }
+      .hero-content { padding: 16px; }
+      .mascot img { height: 88px; }
+      main { padding: 18px 10px 30px; }
+      .collection-grid { grid-template-columns: 1fr; gap: 10px; }
+      .collection-card { min-height: 190px; padding: 18px; }
+      .story-grid { grid-template-columns: 1fr; }
+      .section-head h2 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav aria-label="Main navigation">
+      <a class="brand" href="#top">
+        <img src="Afki.png" alt="" onerror="this.style.display='none'">
+        AfkiVerse &amp; Planet Bari
+      </a>
+      <div class="links">
+        <a href="#collections">Collections</a>
+        <a href="#story">Our story</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="hero-wrap" id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-banner" src="afki-paru-header.png" alt="Afki and Bari in their pastel creative world" onerror="this.style.display='none'">
+      <div class="hero-content">
+        <div>
+          <div class="eyebrow">Thoughtful finds, wrapped with care</div>
+          <h1 id="hero-title">Small joys.<br>Gentle discoveries.</h1>
+          <p>Welcome to AfkiVerse &amp; Planet Bari — a pastel home for beauty and self-care essentials, jewellery, bridal trousseau packing, and personalized gifts and hampers.</p>
+          <div class="actions">
+            <a class="btn primary" href="#collections">Explore collections</a>
+            <a class="btn secondary" href="#story">Meet Afki &amp; Bari</a>
+          </div>
+        </div>
+        <div class="mascots" aria-label="Meet the characters">
+          <a class="mascot" href="#meet-afki">
+            <img src="Afki.png" alt="Afki">
+            <strong>Afki</strong>
+            <small>Dreamer &amp; creator</small>
+          </a>
+          <a class="mascot" href="#meet-bari">
+            <img src="Bari.png" alt="Bari">
+            <strong>Planet Bari</strong>
+            <small>Little joy companion</small>
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <main>
+    <section id="collections" aria-labelledby="collections-title">
+      <div class="section-head">
+        <div>
+          <h2 id="collections-title">Explore our collections</h2>
+          <p>Four thoughtful corners, each with its own little kind of joy.</p>
+        </div>
+        <span class="pill">4 collections</span>
+      </div>
+
+      <div class="collection-grid">
+        <article class="collection-card sparkle" id="sparkle-lab">
+          <div class="collection-icon" aria-hidden="true">✨</div>
+          <h3>Afki's Sparkle Lab</h3>
+          <p>Beauty products, skincare and self-care essentials selected to add a little care to everyday routines.</p>
+          <span class="collection-status">Collection being prepared</span>
+        </article>
+
+        <article class="collection-card pearls" id="bari-pearls">
+          <div class="collection-icon" aria-hidden="true">💎</div>
+          <h3>Bari &amp; Pearls</h3>
+          <p>Jewellery and accessories for everyday elegance, thoughtful styling and special moments.</p>
+          <span class="collection-status">Collection being prepared</span>
+        </article>
+
+        <article class="collection-card trousseau" id="trousseau-packing">
+          <div class="collection-icon" aria-hidden="true">🎀</div>
+          <h3>Afki's Trousseau Packing</h3>
+          <p>Bridal trousseau and customized wedding packing, thoughtfully arranged for meaningful celebrations.</p>
+          <span class="collection-status">Collection being prepared</span>
+        </article>
+
+        <article class="collection-card hampers" id="gift-hampers">
+          <div class="collection-icon" aria-hidden="true">🎁</div>
+          <h3>Bari &amp; Gift Hampers</h3>
+          <p>Gift bundles, personalized gifts and curated hampers for celebrations, surprises and heartfelt occasions.</p>
+          <span class="collection-status">Collection being prepared</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="story" class="story-section" aria-labelledby="story-title">
+      <div class="section-head">
+        <div>
+          <h2 id="story-title">A little about our world</h2>
+          <p>Creativity, care and a little softness around the edges.</p>
+        </div>
+      </div>
+      <div class="story-grid">
+        <article class="story" id="meet-afki">
+          <h3>✿ Meet Afki</h3>
+          <p>A creative, thoughtful dreamer who finds beauty in little details, meaningful gifts and thoughtful presentation.</p>
+        </article>
+        <article class="story" id="meet-bari">
+          <h3>☁ Meet Planet Bari</h3>
+          <p>A fluffy, playful little companion who brings joy, wonder, laughter and warmth to AfkiVerse.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Made gently with <strong>♡ by AfkiVerse &amp; Planet Bari</strong><br>
+    A little universe of thoughtful treasures in plum and pastel.
+  </footer>
+</body>
+</html>
